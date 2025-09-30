@@ -1,99 +1,72 @@
 body {
   font-family: 'Arial', sans-serif;
-  text-align: center;
-  margin-top: 20px;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-  transition: background 1s;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .container {
-  max-width: 450px;
-  margin: auto;
+  width: 90%;
+  max-width: 500px;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  margin: 15px 0;
+  padding: 30px 20px;
   border-radius: 15px;
-  box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
 }
 
 input {
   padding: 10px;
   width: 80%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ddd;
-  transition: transform 0.2s;
-}
-
-input:focus {
-  transform: scale(1.05);
-  border-color: #00bfff;
-  outline: none;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin: 10px 0;
-  cursor: pointer;
+  padding: 12px 20px;
+  margin: 5px;
+  border-radius: 8px;
   border: none;
-  background: #00bfff;
+  background-color: #00bfff;
   color: white;
-  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  background: #009acd;
-  transform: scale(1.05);
+  background-color: #009acd;
 }
 
-.badge {
-  color: #ff4500;
-  font-weight: bold;
-  margin: 10px 0;
-  font-size: 18px;
-  animation: pop 0.5s ease;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-.progress-bar {
-  width: 100%;
-  background-color: #ddd;
-  border-radius: 10px;
-  margin: 10px 0;
-  height: 20px;
-}
-
-#levelBar {
-  height: 100%;
-  width: 0%;
-  background-color: #4caf50;
-  border-radius: 10px;
-  transition: width 1s ease-in-out;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
+.taskItem {
   text-align: left;
-  margin: 5px 0;
-  font-size: 16px;
+  margin: 10px 0;
+  background: #eef6ff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.taskItem a {
+  color: #0077cc;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.taskItem a:hover {
+  text-decoration: underline;
 }
