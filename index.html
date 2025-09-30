@@ -3,50 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillMentor Gamified</title>
+  <title>SkillMentor Pro</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>🎯 SkillMentor Gamified Dashboard</h1>
 
-    <div id="login" class="card">
-      <input type="text" id="name" placeholder="Enter your name">
-      <button onclick="start()">Start</button>
+    <!-- Login / Register -->
+    <div id="loginCard" class="card">
+      <h2>Welcome to SkillMentor</h2>
+      <input type="text" id="username" placeholder="Enter your name">
+      <button onclick="login()">Login / Register</button>
     </div>
 
-    <div id="dashboard" style="display:none;">
-      <div class="card">
-        <h2 id="welcome"></h2>
-        <h3>🔥 Streak: <span id="streak">0</span> days</h3>
-        <h3>🏆 Points: <span id="points">0</span></h3>
-        <div class="progress-bar">
-          <div id="levelBar"></div>
-        </div>
-        <h3>🏅 Level: <span id="level">1</span></h3>
-        <p id="badge" class="badge"></p>
-      </div>
-
-      <div class="card">
-        <h3>📝 Today's Tasks</h3>
-        <ul id="tasksList"></ul>
-        <button onclick="completeAllTasks()">Complete All Tasks</button>
-      </div>
-
-      <div class="card">
-        <h3>🎲 Daily Challenge</h3>
-        <p id="dailyChallenge"></p>
-      </div>
-
-      <div class="card">
-        <h3>Weekly Progress</h3>
-        <canvas id="weeklyChart" width="300" height="150"></canvas>
-      </div>
+    <!-- Goal Selection -->
+    <div id="goalCard" class="card" style="display:none;">
+      <h2>What do you want to focus on?</h2>
+      <button onclick="selectGoal('placement')">Placement Preparation</button>
+      <button onclick="selectGoal('skill')">Develop New Skill</button>
+      <button onclick="selectGoal('learn')">Learn Something New</button>
     </div>
 
-    <audio id="taskSound" src="https://www.soundjay.com/button/sounds/button-16.mp3"></audio>
-    <audio id="levelUpSound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
+    <!-- Tasks / Dashboard -->
+    <div id="taskCard" class="card" style="display:none;">
+      <h2 id="welcomeUser"></h2>
+      <div id="taskList"></div>
+    </div>
+
   </div>
 
   <script src="script.js"></script>
