@@ -1,98 +1,47 @@
-let streak = localStorage.getItem('streak') ? parseInt(localStorage.getItem('streak')) : 0;
-let points = localStorage.getItem('points') ? parseInt(localStorage.getItem('points')) : 0;
-let level = localStorage.getItem('level') ? parseInt(localStorage.getItem('level')) : 1;
-let weeklyData = localStorage.getItem('weeklyData') ? JSON.parse(localStorage.getItem('weeklyData')) : [0,0,0,0,0,0,0];
+let userName = "";
+let selectedGoal = "";
 
-let dailyTasks = ["Read 1 chapter", "Solve 5 coding problems", "Watch tutorial video"];
-let tasksCompleted = Array(dailyTasks.length).fill(false);
-let challenges = ["Learn a new shortcut", "Teach a friend something", "Complete a mini project"];
-let todayChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+// Predefined tasks
+const tasks = {
+  placement: [
+    {name: "Coding Practice", link: "https://www.hackerrank.com/"},
+    {name: "Aptitude Practice", link: "https://www.indiabix.com/"},
+    {name: "Communication Skills", link: "https://www.ted.com/topics/communication"}
+  ],
+  skill: [
+    {name: "Learn Web Development", link: "https://www.freecodecamp.org/"},
+    {name: "Learn Python", link: "https://www.learnpython.org/"},
+    {name: "Learn Data Structures", link: "https://www.geeksforgeeks.org/data-structures/"}
+  ],
+  learn: [
+    {name: "Learn AI Basics", link: "https://www.coursera.org/"},
+    {name: "Learn Cloud Computing", link: "https://azure.microsoft.com/en-in/training/"},
+    {name: "Learn Git & GitHub", link: "https://www.atlassian.com/git/tutorials"}
+  ]
+};
 
-const taskSound = document.getElementById('taskSound');
-const levelUpSound = document.getElementById('levelUpSound');
-
-function start() {
-  const name = document.getElementById('name').value;
-  if(name === "") { alert("Enter your name!"); return; }
-  document.getElementById('welcome').innerText = `Welcome, ${name}!`;
-  document.getElementById('login').style.display = "none";
-  document.getElementById('dashboard').style.display = "block";
-  document.getElementById('dailyChallenge').innerText = todayChallenge;
-  renderTasks();
-  updateDashboard();
-  renderChart();
+function login() {
+  userName = document.getElementById('username').value.trim();
+  if(userName === "") { alert("Please enter your name."); return; }
+  document.getElementById('loginCard').style.display = "none";
+  document.getElementById('goalCard').style.display = "block";
 }
 
-function renderTasks() {
-  const list = document.getElementById('tasksList');
-  list.innerHTML = "";
-  dailyTasks.forEach((task, index) => {
-    const li = document.createElement('li');
-    li.innerHTML = `<input type="checkbox" id="task${index}" onchange="completeTask(${index})"> ${task}`;
-    list.appendChild(li);
-  });
+function selectGoal(goal) {
+  selectedGoal = goal;
+  document.getElementById('goalCard').style.display = "none";
+  document.getElementById('taskCard').style.display = "block";
+  document.getElementById('welcomeUser').innerText = `Welcome, ${userName}! Your focus: ${goal.toUpperCase()}`;
+  showTasks();
 }
 
-function completeTask(index) {
-  if(!tasksCompleted[index]) {
-    tasksCompleted[index] = true;
-    points += 10;
-    taskSound.play(); // Play task completion sound
-    localStorage.setItem('points', points);
-    updateDashboard();
-    checkAllTasks();
-  }
-}
-
-function checkAllTasks() {
-  if(tasksCompleted.every(v => v)) {
-    streak += 1;
-    points += 20; // bonus points for completing all tasks
-    localStorage.setItem('streak', streak);
-    localStorage.setItem('points', points);
-    levelUpSound.play(); // Play level up sound
-    alert("🎉 All tasks completed! Streak & bonus points awarded!");
-    updateDashboard();
-  }
-}
-
-function completeAllTasks() {
-  dailyTasks.forEach((task, index) => {
-    if(!tasksCompleted[index]) completeTask(index);
-    document.getElementById(`task${index}`).checked = true;
-  });
-}
-
-function updateDashboard() {
-  document.getElementById('streak').innerText = streak;
-  document.getElementById('points').innerText = points;
-  level = Math.floor(points / 50) + 1;
-  document.getElementById('level').innerText = level;
-  document.getElementById('levelBar').style.width = ((points % 50) / 50 * 100) + "%";
-
-  let badgeText = "";
-  if(streak >= 7) badgeText = "🏅 7-Day Streak Badge!";
-  else if(level === 2) badgeText = "🎉 Level 2 Achieved!";
-  else if(level === 3) badgeText = "🔥 Level 3 Achieved!";
-  document.getElementById('badge').innerText = badgeText;
-
-  localStorage.setItem('level', level);
-}
-
-function renderChart() {
-  const ctx = document.getElementById('weeklyChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-      datasets: [{
-        label: 'Tasks Completed',
-        data: weeklyData,
-        backgroundColor: 'rgba(255, 165, 0, 0.7)'
-      }]
-    },
-    options: {
-      scales: { y: { beginAtZero: true, max: 1 } }
-    }
+function showTasks() {
+  const listDiv = document.getElementById('taskList');
+  listDiv.innerHTML = "";
+  tasks[selectedGoal].forEach(task => {
+    const div = document.createElement('div');
+    div.className = "taskItem";
+    div.innerHTML = `<strong>${task.name}</strong> <a href="${task.link}" target="_blank">Tutorial</a>`;
+    listDiv.appendChild(div);
   });
 }
