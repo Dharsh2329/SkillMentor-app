@@ -1,23 +1,51 @@
 let userName = "";
 let selectedGoal = "";
 
-// Predefined tasks
+// Predefined tasks with tutorials & quizzes separately
 const tasks = {
-  placement: [
-    {name: "Coding Practice", link: "https://www.hackerrank.com/"},
-    {name: "Aptitude Practice", link: "https://www.indiabix.com/"},
-    {name: "Communication Skills", link: "https://www.ted.com/topics/communication"}
-  ],
-  skill: [
-    {name: "Learn Web Development", link: "https://www.freecodecamp.org/"},
-    {name: "Learn Python", link: "https://www.learnpython.org/"},
-    {name: "Learn Data Structures", link: "https://www.geeksforgeeks.org/data-structures/"}
-  ],
-  learn: [
-    {name: "Learn AI Basics", link: "https://www.coursera.org/"},
-    {name: "Learn Cloud Computing", link: "https://azure.microsoft.com/en-in/training/"},
-    {name: "Learn Git & GitHub", link: "https://www.atlassian.com/git/tutorials"}
-  ]
+  placement: {
+    tutorials: [
+      {name: "Coding Practice (HackerRank)", link: "https://www.hackerrank.com/"},
+      {name: "Coding Practice (LeetCode)", link: "https://leetcode.com/"},
+      {name: "Aptitude Practice", link: "https://www.indiabix.com/"},
+      {name: "Communication Skills", link: "https://www.ted.com/topics/communication"}
+    ],
+    quizzes: [
+      {name: "Coding Quiz (GeeksforGeeks)", link: "https://practice.geeksforgeeks.org/"},
+      {name: "Aptitude Test", link: "https://www.careerbless.com/aptitude/quantitative"}
+    ]
+  },
+  skill: {
+    tutorials: [
+      {name: "Learn Web Development", link: "https://www.freecodecamp.org/"},
+      {name: "Learn Python", link: "https://www.learnpython.org/"},
+      {name: "Learn Data Structures", link: "https://www.geeksforgeeks.org/data-structures/"},
+      {name: "Learn Java", link: "https://www.javatpoint.com/java-tutorial"},
+      {name: "Learn Machine Learning", link: "https://www.coursera.org/learn/machine-learning"},
+      {name: "Learn SQL & Databases", link: "https://www.w3schools.com/sql/"},
+      {name: "Coding Practice (LeetCode)", link: "https://leetcode.com/"}
+    ],
+    quizzes: [
+      {name: "Python Quiz", link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=PYTHON"},
+      {name: "Java Quiz", link: "https://www.javatpoint.com/java-mcq"},
+      {name: "SQL Quiz", link: "https://www.sanfoundry.com/sql-questions-answers/"}
+    ]
+  },
+  learn: {
+    tutorials: [
+      {name: "Learn AI Basics", link: "https://www.coursera.org/"},
+      {name: "Learn Cloud Computing", link: "https://azure.microsoft.com/en-in/training/"},
+      {name: "Learn Git & GitHub", link: "https://www.atlassian.com/git/tutorials"},
+      {name: "Learn Blockchain Basics", link: "https://www.ibm.com/topics/what-is-blockchain"},
+      {name: "Learn Cybersecurity", link: "https://www.cybrary.it/"},
+      {name: "Learn DevOps Fundamentals", link: "https://www.edx.org/learn/devops"}
+    ],
+    quizzes: [
+      {name: "AI Quiz", link: "https://www.sanfoundry.com/artificial-intelligence-questions-answers/"},
+      {name: "Cloud Computing Quiz", link: "https://www.javatpoint.com/cloud-computing-mcq"},
+      {name: "Cybersecurity Quiz", link: "https://www.sanfoundry.com/cyber-security-questions-answers/"}
+    ]
+  }
 };
 
 function login() {
@@ -38,10 +66,42 @@ function selectGoal(goal) {
 function showTasks() {
   const listDiv = document.getElementById('taskList');
   listDiv.innerHTML = "";
-  tasks[selectedGoal].forEach(task => {
+
+  // Tutorials Section
+  const tutorialHeader = document.createElement('h3');
+  tutorialHeader.innerText = "📘 Tutorials";
+  listDiv.appendChild(tutorialHeader);
+
+  tasks[selectedGoal].tutorials.forEach(task => {
     const div = document.createElement('div');
     div.className = "taskItem";
-    div.innerHTML = `<strong>${task.name}</strong> <a href="${task.link}" target="_blank">Tutorial</a>`;
+    div.innerHTML = `<strong>${task.name}</strong> <a href="${task.link}" target="_blank">Start</a>`;
     listDiv.appendChild(div);
   });
+
+  // Add separator
+  const separator = document.createElement('hr');
+  listDiv.appendChild(separator);
+
+  // Quizzes Section
+  const quizHeader = document.createElement('h3');
+  quizHeader.innerText = "📝 Quizzes / Tests";
+  listDiv.appendChild(quizHeader);
+
+  tasks[selectedGoal].quizzes.forEach(task => {
+    const div = document.createElement('div');
+    div.className = "taskItem";
+    div.innerHTML = `<strong>${task.name}</strong> <a href="${task.link}" target="_blank">Take Quiz</a>`;
+    listDiv.appendChild(div);
+  });
+
+  // Add "Back" button
+  const backBtn = document.createElement('button');
+  backBtn.innerText = "⬅️ Back to Goal Selection";
+  backBtn.style.marginTop = "20px";
+  backBtn.onclick = () => {
+    document.getElementById('taskCard').style.display = "none";
+    document.getElementById('goalCard').style.display = "block";
+  };
+  listDiv.appendChild(backBtn);
 }
