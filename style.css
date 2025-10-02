@@ -3,7 +3,7 @@ body {
   /* Background image + gradient overlay */
   background: 
     linear-gradient(rgba(30, 60, 114, 0.6), rgba(118, 75, 162, 0.6)), /* semi-transparent overlay for readability */
-    url('https://images.unsplash.com/photo-1581092795366-1530b6ef3c7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600') no-repeat center center fixed; /* education image */
+    url('Screenshot 2025-10-02 200531.png') no-repeat center center fixed; /* education image */
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -103,3 +103,4 @@ button:hover {
 .taskItem a:hover {
   text-decoration: underline;
 }
+
