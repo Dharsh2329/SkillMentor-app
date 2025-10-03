@@ -1,108 +1,133 @@
+/* -------- Body & Background -------- */
 body {
   font-family: 'Arial', sans-serif;
-  /* Background image + gradient overlay */
-  background: 
-    linear-gradient(rgba(30, 60, 114, 0.6), rgba(118, 75, 162, 0.6)), /* semi-transparent overlay for readability */
-    url('Screenshot 2025-10-02 200531.png') no-repeat center center fixed; /* education image */
-  background-size: cover;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
   align-items: center;
+
+  /* Background image + gradient fallback */
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-image: url('Screenshot 2025-10-02 200531'); /* Place your screenshot in images folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
 }
 
-/* Optional: animated gradient overlay */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* -------- Splash Screen -------- */
+.splash-screen {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 1s;
 }
 
-/* Container and card remain glass-effect */
+.splash-text {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.splash-subtext {
+  font-size: 16px;
+  margin-top: 10px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* -------- Container & Cards -------- */
 .container {
   width: 90%;
   max-width: 500px;
+  z-index: 10;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0,0,0,0.7);
   padding: 30px 20px;
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   margin-bottom: 20px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
   color: #fff;
 }
 
 .card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
 
+/* -------- Inputs & Buttons -------- */
 input {
   padding: 12px;
   width: 80%;
   margin-bottom: 15px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
   color: #fff;
   outline: none;
 }
 
-input::placeholder {
-  color: #ddd;
-}
+input::placeholder { color: #ddd; }
 
 button {
   padding: 12px 20px;
   margin: 5px;
   border-radius: 12px;
   border: none;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
   color: white;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #0072ff, #00c6ff);
   transform: scale(1.05);
+  background: linear-gradient(135deg,#0072ff,#00c6ff);
 }
 
+/* -------- Tasks -------- */
 .taskItem {
   text-align: left;
   margin: 10px 0;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
   padding: 12px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s;
-}
-
-.taskItem:hover {
-  transform: scale(1.02);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .taskItem a {
-  color: #00c6ff;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 10px;
+  color:#00c6ff;
+  margin-left:10px;
+  text-decoration:none;
 }
 
 .taskItem a:hover {
-  text-decoration: underline;
+  text-decoration:underline;
 }
 
-
-
+hr {
+  border: 0.5px solid #fff;
+  margin:15px 0;
+}
