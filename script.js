@@ -1,7 +1,19 @@
+// ---------------- Splash Screen ----------------
+const splashTimeout = setTimeout(() => {
+  document.getElementById("splash").style.display = "none";
+  document.getElementById("mainContainer").style.display = "block";
+}, 3000);
+
+function skipSplash() {
+  clearTimeout(splashTimeout);
+  document.getElementById("splash").style.display = "none";
+  document.getElementById("mainContainer").style.display = "block";
+}
+
+// ---------------- LOGIN / GOAL / TASKS ----------------
 let userName = "";
 let selectedGoal = "";
 
-// Predefined tasks with tutorials & quizzes separately
 const tasks = {
   placement: {
     tutorials: [
@@ -12,9 +24,7 @@ const tasks = {
     quizzes: [
       {name: "Coding Quiz (GeeksforGeeks)", link: "https://practice.geeksforgeeks.org/"},
       {name: "Aptitude Test", link: "https://aptitude-test.com/"},
-      { name: "Communication Test (British English Score)", link: "https://www.englishscore.com//" }
-    ]
-  },
+      {name: "Communication Test (British English Score)", link: "https://www.englishscore.com/"}
     ]
   },
   skill: {
@@ -24,7 +34,7 @@ const tasks = {
       {name: "Learn Data Structures", link: "https://www.geeksforgeeks.org/data-structures/"},
       {name: "Learn Java", link: "https://www.tpointtech.com/java-tutorial"},
       {name: "Learn Machine Learning", link: "https://www.coursera.org/learn/machine-learning"},
-      {name: "Learn SQL & Databases", link: "https://www.w3schools.com/sql/"},
+      {name: "Learn SQL & Databases", link: "https://www.w3schools.com/sql/"}
     ],
     quizzes: [
       {name: "Python Quiz", link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=PYTHON"},
@@ -49,26 +59,32 @@ const tasks = {
   }
 };
 
+// ---------------- LOGIN ----------------
 function login() {
   userName = document.getElementById('username').value.trim();
-  if(userName === "") { alert("Please enter your name."); return; }
+  if(userName === "") {
+    alert("Please enter your name.");
+    return;
+  }
   document.getElementById('loginCard').style.display = "none";
   document.getElementById('goalCard').style.display = "block";
+  document.getElementById('welcomeUser').innerText = `Welcome, ${userName}! 🌟`;
 }
 
+// ---------------- SELECT GOAL ----------------
 function selectGoal(goal) {
   selectedGoal = goal;
   document.getElementById('goalCard').style.display = "none";
   document.getElementById('taskCard').style.display = "block";
-  document.getElementById('welcomeUser').innerText = `Welcome, ${userName}! Your focus: ${goal.toUpperCase()}`;
   showTasks();
 }
 
+// ---------------- SHOW TASKS ----------------
 function showTasks() {
   const listDiv = document.getElementById('taskList');
   listDiv.innerHTML = "";
 
-  // Tutorials Section
+  // Tutorials
   const tutorialHeader = document.createElement('h3');
   tutorialHeader.innerText = "📘 Tutorials";
   listDiv.appendChild(tutorialHeader);
@@ -80,11 +96,11 @@ function showTasks() {
     listDiv.appendChild(div);
   });
 
-  // Add separator
+  // Separator
   const separator = document.createElement('hr');
   listDiv.appendChild(separator);
 
-  // Quizzes Section
+  // Quizzes
   const quizHeader = document.createElement('h3');
   quizHeader.innerText = "📝 Quizzes / Tests";
   listDiv.appendChild(quizHeader);
@@ -96,7 +112,7 @@ function showTasks() {
     listDiv.appendChild(div);
   });
 
-  // Add "Back" button
+  // Back Button
   const backBtn = document.createElement('button');
   backBtn.innerText = "⬅️ Back to Goal Selection";
   backBtn.style.marginTop = "20px";
@@ -106,4 +122,3 @@ function showTasks() {
   };
   listDiv.appendChild(backBtn);
 }
-
