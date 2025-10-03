@@ -10,7 +10,7 @@ body {
 
   /* Gradient fallback and background image */
   background: linear-gradient(135deg, #e0eafc, #cfdef3);
-  background-image: url('Screenshot2025-10-02-200531.png'); /* Correct path to your image */
+  background-image: url('Screenshot 2025-10-02 200531.png'); /* Correct path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -135,3 +135,4 @@ hr {
   border: 0.5px solid #ccc;
   margin:15px 0;
 }
+
