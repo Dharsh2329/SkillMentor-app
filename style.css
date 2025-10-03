@@ -10,7 +10,7 @@ body {
 
   /* Background image + gradient fallback */
   background: linear-gradient(135deg, #1e3c72, #2a5298);
-  background-image: url('Screenshot 2025-10-02 200531'); /* Place your screenshot in images folder */
+  background-image: url('Screenshot 2025-10-02 200531.png'); /* Place your screenshot in images folder */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -131,3 +131,4 @@ hr {
   border: 0.5px solid #fff;
   margin:15px 0;
 }
+
