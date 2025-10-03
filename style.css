@@ -8,28 +8,20 @@ body {
   justify-content: center;
   align-items: center;
 
-  /* Gradient fallback and background image */
-  background: linear-gradient(135deg, #e0eafc, #cfdef3);
-  background-image: url('Screenshot 2025-10-02 200531.png'); /* Correct path to your image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  color: #333; /* darker text for readability */
+  /* Modern professional gradient */
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* light gray-blue gradient */
+  color: #333; /* text visible on light background */
 }
 
 /* -------- Splash Screen -------- */
 .splash-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top:0; left:0; width:100%; height:100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.4); /* semi-transparent overlay to see background image */
+  background: rgba(0,0,0,0.3); /* semi-transparent overlay */
   color: #fff;
   z-index: 1000;
   cursor: pointer;
@@ -40,13 +32,13 @@ body {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
 .splash-subtext {
   font-size: 16px;
   margin-top: 10px;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 @keyframes fadeIn {
@@ -62,14 +54,14 @@ body {
 }
 
 .card {
-  background: rgba(255,255,255,0.9); /* lighter for visibility over background */
+  background: rgba(255,255,255,0.95); /* light cards for visibility */
   padding: 30px 20px;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   margin-bottom: 20px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  color: #333; /* darker text for readability */
+  color: #333;
 }
 
 .card:hover {
@@ -96,7 +88,7 @@ button {
   margin: 5px;
   border-radius: 12px;
   border: none;
-  background: linear-gradient(135deg,#4facfe,#00f2fe); /* professional teal-blue */
+  background: linear-gradient(135deg,#4facfe,#00f2fe); /* teal-blue gradient */
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -135,4 +127,3 @@ hr {
   border: 0.5px solid #ccc;
   margin:15px 0;
 }
-
