@@ -1,16 +1,23 @@
 // ---------------- Splash Screen ----------------
-const splashTimeout = setTimeout(() => {
-  document.getElementById("splash").style.display = "none";
-  document.getElementById("mainContainer").style.display = "block";
-}, 3000);
+window.addEventListener("DOMContentLoaded", () => {
+  const splash = document.getElementById("splash");
+  const main = document.getElementById("mainContainer");
 
-function skipSplash() {
-  clearTimeout(splashTimeout);
-  document.getElementById("splash").style.display = "none";
-  document.getElementById("mainContainer").style.display = "block";
-}
+  // auto hide splash after 3s
+  const splashTimeout = setTimeout(() => {
+    splash.style.display = "none";
+    main.style.display = "block";
+  }, 3000);
 
-// ---------------- LOGIN / GOAL / TASKS ----------------
+  // skip splash if clicked
+  splash.addEventListener("click", () => {
+    clearTimeout(splashTimeout);
+    splash.style.display = "none";
+    main.style.display = "block";
+  });
+});
+
+// ---------------- Login / Goal / Tasks ----------------
 let userName = "";
 let selectedGoal = "";
 
@@ -59,13 +66,16 @@ const tasks = {
   }
 };
 
-// ---------------- LOGIN ----------------
+// ---------------- LOGIN FUNCTION ----------------
 function login() {
-  userName = document.getElementById('username').value.trim();
+  const usernameInput = document.getElementById('username');
+  userName = usernameInput.value.trim();
+
   if(userName === "") {
     alert("Please enter your name.");
     return;
   }
+
   document.getElementById('loginCard').style.display = "none";
   document.getElementById('goalCard').style.display = "block";
   document.getElementById('welcomeUser').innerText = `Welcome, ${userName}! 🌟`;
@@ -96,9 +106,7 @@ function showTasks() {
     listDiv.appendChild(div);
   });
 
-  // Separator
-  const separator = document.createElement('hr');
-  listDiv.appendChild(separator);
+  listDiv.appendChild(document.createElement('hr'));
 
   // Quizzes
   const quizHeader = document.createElement('h3');
@@ -112,7 +120,7 @@ function showTasks() {
     listDiv.appendChild(div);
   });
 
-  // Back Button
+  // Back button
   const backBtn = document.createElement('button');
   backBtn.innerText = "⬅️ Back to Goal Selection";
   backBtn.style.marginTop = "20px";
