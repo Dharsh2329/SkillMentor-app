@@ -3,13 +3,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const splash = document.getElementById("splash");
   const main = document.getElementById("mainContainer");
 
-  // auto hide splash after 3s
   const splashTimeout = setTimeout(() => {
     splash.style.display = "none";
     main.style.display = "block";
   }, 3000);
 
-  // skip splash if clicked
   splash.addEventListener("click", () => {
     clearTimeout(splashTimeout);
     splash.style.display = "none";
