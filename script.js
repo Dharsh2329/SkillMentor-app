@@ -5,14 +5,16 @@ let selectedGoal = "";
 const tasks = {
   placement: {
     tutorials: [
-      {name: "Coding Practice (HackerRank)", link: "https://www.hackerrank.com/"},
       {name: "Coding Practice (LeetCode)", link: "https://leetcode.com/"},
       {name: "Aptitude Practice", link: "https://www.indiabix.com/"},
       {name: "Communication Skills", link: "https://www.ted.com/topics/communication"}
     ],
     quizzes: [
       {name: "Coding Quiz (GeeksforGeeks)", link: "https://practice.geeksforgeeks.org/"},
-      {name: "Aptitude Test", link: "https://www.careerbless.com/aptitude/quantitative"}
+      {name: "Aptitude Test", link: "https://aptitude-test.com/"},
+      { name: "Communication Test (British English Score)", link: "https://www.englishscore.com//" }
+    ]
+  },
     ]
   },
   skill: {
@@ -20,14 +22,13 @@ const tasks = {
       {name: "Learn Web Development", link: "https://www.freecodecamp.org/"},
       {name: "Learn Python", link: "https://www.learnpython.org/"},
       {name: "Learn Data Structures", link: "https://www.geeksforgeeks.org/data-structures/"},
-      {name: "Learn Java", link: "https://www.javatpoint.com/java-tutorial"},
+      {name: "Learn Java", link: "https://www.tpointtech.com/java-tutorial"},
       {name: "Learn Machine Learning", link: "https://www.coursera.org/learn/machine-learning"},
       {name: "Learn SQL & Databases", link: "https://www.w3schools.com/sql/"},
-      {name: "Coding Practice (LeetCode)", link: "https://leetcode.com/"}
     ],
     quizzes: [
       {name: "Python Quiz", link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=PYTHON"},
-      {name: "Java Quiz", link: "https://www.javatpoint.com/java-mcq"},
+      {name: "Java Quiz", link: "https://www.geeksforgeeks.org/java/java-quiz/"},
       {name: "SQL Quiz", link: "https://www.sanfoundry.com/sql-questions-answers/"}
     ]
   },
@@ -42,7 +43,7 @@ const tasks = {
     ],
     quizzes: [
       {name: "AI Quiz", link: "https://www.sanfoundry.com/artificial-intelligence-questions-answers/"},
-      {name: "Cloud Computing Quiz", link: "https://www.javatpoint.com/cloud-computing-mcq"},
+      {name: "Cloud Computing Quiz", link: "https://www.sanfoundry.com/1000-cloud-computing-questions-answers/"},
       {name: "Cybersecurity Quiz", link: "https://www.sanfoundry.com/cyber-security-questions-answers/"}
     ]
   }
@@ -105,3 +106,4 @@ function showTasks() {
   };
   listDiv.appendChild(backBtn);
 }
+
